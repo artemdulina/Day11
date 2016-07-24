@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace MathematicalEntities
 {
@@ -11,7 +7,8 @@ namespace MathematicalEntities
         TValue this[int nIndex, int mIndex] { get; set; }
         int N { get; }
         int M { get; }
-        IMatrix<TValue> Multiply(IMatrix<TValue> matrix);
+
+        IMatrix<TValue> Multiply(IMatrix<TValue> anotherMatrix);
         IMatrix<TValue> Multiply(TValue value);
         IMatrix<TValue> Difference(IMatrix<TValue> matrix);
         IMatrix<TValue> Difference(TValue value);
