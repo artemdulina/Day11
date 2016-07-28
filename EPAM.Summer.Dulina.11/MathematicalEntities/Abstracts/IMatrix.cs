@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace MathematicalEntities
+namespace MathematicalEntities.Abstracts
 {
     public interface IMatrix<TValue> : IEnumerable<TValue>
     {
@@ -10,7 +10,5 @@ namespace MathematicalEntities
 
         IMatrix<TValue> Multiply(IMatrix<TValue> anotherMatrix);
         IMatrix<TValue> Multiply(TValue value);
-        IMatrix<TValue> Difference(IMatrix<TValue> matrix);
-        IMatrix<TValue> Difference(TValue value);
     }
 }
