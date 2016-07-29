@@ -10,5 +10,7 @@ namespace MathematicalEntities.Abstracts
 
         IMatrix<TValue> Multiply(IMatrix<TValue> anotherMatrix);
         IMatrix<TValue> Multiply(TValue value);
+
+        TValue[,] ToArray();
     }
 }

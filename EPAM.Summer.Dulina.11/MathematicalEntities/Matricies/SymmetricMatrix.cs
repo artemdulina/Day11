@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using MathematicalEntities.Abstracts;
+using MathematicalEntities.Helpers;
 
 namespace MathematicalEntities.Matricies
 {
@@ -58,9 +60,9 @@ namespace MathematicalEntities.Matricies
             return j > i ? matrix[j][i] : matrix[i][j];
         }
 
-        public override IMatrix<T> Multiply(IMatrix<T> anotherMatrix)
+        public override Matrix<T> CreateMatrix(IMatrix<T> matrix)
         {
-            return base.Multiply(anotherMatrix);
+            return new SymmetricMatrix<T>(matrix.ToArray());
         }
     }
 }

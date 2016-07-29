@@ -4,7 +4,7 @@ using MathematicalEntities.Matricies;
 
 namespace MathematicalEntities.Visitors
 {
-    public class AdditionVisitor<T> : IVisitor<T>
+    public sealed class AdditionVisitor<T> : IVisitor<T>
     {
         public Matrix<T> Result { get; private set; }
         public Matrix<T> MatrixToAdd { get; }

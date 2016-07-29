@@ -134,7 +134,7 @@ namespace MathematicalEntities.Matricies
             }
         }
 
-        private Matrix<T> MatrixConvert(Matrix<T> matrix)
+        private Matrix<T> MatrixConvert(IMatrix<T> matrix)
         {
             Matrix<T> matrixConverted = new Matrix<T>(matrix.N, matrix.M);
             for (int i = 0; i < matrix.N; i++)
@@ -169,6 +169,42 @@ namespace MathematicalEntities.Matricies
                     {
                         result[i, j] = OperationHelper<T>.AdditionFunction(result[i, j], OperationHelper<T>.MultiplyFunction(this[i, k], anotherMatrix[k, j]));
                     }
+                }
+            }
+
+            return result;
+        }
+
+        public virtual void DoMultiply(Matrix<T> multiplier, Matrix<T> result)
+        {
+            IMatrix<T> tempResult = Multiply(multiplier);
+            if (tempResult.N != result.N || tempResult.M != result.M)
+            {
+                throw new ArgumentException($"Matrix {nameof(result)} has inappropriate dimension");
+            }
+            tempResult = result.CreateMatrix(tempResult);
+            for (int i = 0; i < tempResult.N; i++)
+            {
+                for (int j = 0; j < tempResult.M; j++)
+                {
+                    result[i, j] = tempResult[i, j];
+                }
+            }
+        }
+
+        public virtual Matrix<T> CreateMatrix(IMatrix<T> matrix)
+        {
+            return MatrixConvert(matrix);
+        }
+
+        public T[,] ToArray()
+        {
+            T[,] result = new T[N, M];
+            for (int i = 0; i < N; i++)
+            {
+                for (int j = 0; j < M; j++)
+                {
+                    result[i, j] = this[i, j];
                 }
             }
 
